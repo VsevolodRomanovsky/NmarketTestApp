@@ -1,0 +1,87 @@
+<div class="example-container mat-elevation-z8">
+
+  <div class="example-loading-shade"
+       *ngIf="dataSource.isLoadingResults || dataSource.isRateLimitReached">
+    <mat-spinner *ngIf="dataSource.isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="dataSource.isRateLimitReached">
+      Что-то пошло не так и Web API не доступно. Попробуйте позже или обновите страницу.
+    </div>
+  </div>
+
+  <mat-table #table class="example-table" [dataSource]="dataSource"
+             matSort matSortActive="TotalArea" matSortDisableClear matSortDirection="desc">
+    <!-- Номер объекта в системе -->
+    <ng-container matColumnDef="flatId">
+      <mat-header-cell mat-header-cell *matHeaderCellDef>№</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="cdk-column-flatId">{{element.flatId}}</mat-cell>
+    </ng-container>
+    <!-- ЖК -->
+    <ng-container matColumnDef="Building.Name">
+      <mat-header-cell *matHeaderCellDef>ЖК</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.building.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Building.Queue">
+      <mat-header-cell *matHeaderCellDef>Очередь</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.building.queue}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Building.Housing">
+      <mat-header-cell *matHeaderCellDef>Корпус</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.building.housing}}</mat-cell>
+    </ng-container>
+
+    <!-- Количество комнат -->
+    <ng-container matColumnDef="RoomsCount">
+      <mat-header-cell *matHeaderCellDef>Количество комнат</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.roomsCount}}</mat-cell>
+    </ng-container>
+    <!-- Площадь общая -->
+    <ng-container matColumnDef="TotalArea">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="TotalArea">Площадь</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.totalArea}}</mat-cell>
+    </ng-container>
+    <!-- Площадь кухни -->
+    <ng-container matColumnDef="KitchenArea">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="KitchenArea">Площадь кухни</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.kitchenArea}}</mat-cell>
+    </ng-container>
+    <!-- Этаж -->
+    <ng-container matColumnDef="Floor">
+      <mat-header-cell mat-header-cell *matHeaderCellDef>Этаж</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.floor}}</mat-cell>
+    </ng-container>
+    <!-- Стоимость -->
+    <ng-container matColumnDef="Price">
+      <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header="Price">Стоимость</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button class="btn" mat-stroked-button
+                (click)="openDetails(element.flatId)"
+                color="green"
+                matTooltip="Просмотр объекта">
+          <mat-icon svgIcon="details"></mat-icon>
+        </button>
+        <button class="btn"
+                mat-stroked-button
+                matTooltip="Редактировать"
+                color="primary"
+                (click)="editDetails(element.flatId)">
+          <mat-icon svgIcon="edit"></mat-icon>
+        </button>
+        <button class="btn" color="warn"
+                matTooltip="Удалить объект"
+                matTooltipClass="example-tooltip-red"
+                mat-stroked-button (click)="deleteObject(element.flatId)">
+          <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></mat-header-row>
+    <mat-row (dblclick)="openDetails(row['FlatId'])" mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="dataSource.resultsLength" [pageSize]="20"
+                 [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+</div>

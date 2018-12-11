@@ -1,0 +1,47 @@
+<mat-dialog-content>
+  <div class="data-container">
+    <div class="divTable">
+      <div class="divTableBody">
+        <div class="divTableRow">
+          <div class="divTableCell">Регион:</div>
+          <div class="divTableCell"> {{flat.building.district.region.regionId}} {{flat.building.district.region.name}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Район:</div>
+          <div class="divTableCell">{{flat.building.district.districtId}} {{flat.building.district.name}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">ЖК:</div>
+          <div class="divTableCell"> {{flat.building.buildingId}} ЖК:{{flat.building.name}} оч.{{flat.building.queue}} к.{{flat.building.housing}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Объект:</div>
+          <div class="divTableCell">{{flat.flatId}} </div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Этаж:</div>
+          <div class="divTableCell">{{flat.floor}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Количество комнат:</div>
+          <div class="divTableCell">{{flat.roomsCount}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Общая площадь:</div>
+          <div class="divTableCell">{{flat.totalArea}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Площадь кухни:</div>
+          <div class="divTableCell">{{flat.kitchenArea}}</div>
+        </div>
+        <div class="divTableRow">
+          <div class="divTableCell">Стоимость:</div>
+          <div class="divTableCell">{{flat.price}}</div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions>
+      <button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+  </div>
+ </mat-dialog-content>

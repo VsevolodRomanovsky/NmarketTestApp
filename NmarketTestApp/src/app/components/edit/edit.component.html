@@ -1,0 +1,20 @@
+  <div class="data-container">
+    <form [formGroup]="objForm" (ngSubmit)="onFormSubmit(objForm.value)">
+      <p>
+        {{formData[0].flatId}}
+      </p>
+      <div class="data-container">
+        <mat-form-field>
+          <input formControlName="totalArea" matInput placeholder="Oбщая площадь" />
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="kitchenArea" matInput placeholder="Площадь кухни" />
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="price" matInput placeholder="Стоимость" />
+        </mat-form-field>
+      </div>
+      <button type="submit" class="mat-raised-button">Сохранить</button>
+      <button class="mat-raised-button" (click)="return()">Отмена</button>
+    </form>
+  </div>

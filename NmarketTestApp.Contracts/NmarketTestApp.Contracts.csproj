@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NmarketTestApp.Models\NmarketTestApp.Models.csproj" />
+    <ProjectReference Include="..\NmarketTestApp.Utils\NmarketTestApp.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

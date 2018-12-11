@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="src\app\common\dataStore.ts" />
+    <None Remove="src\app\common\nmDataSource.ts" />
+    <None Remove="src\app\models\object.model.ts" />
+    <None Remove="src\app\modules\material\material.module.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="nmarket-test-app\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NmarketTestApp.Contracts\NmarketTestApp.Contracts.csproj" />
+    <ProjectReference Include="..\NmarketTestApp.Data\NmarketTestApp.Data.csproj" />
+    <ProjectReference Include="..\NmarketTestApp.Models\NmarketTestApp.Models.csproj" />
+    <ProjectReference Include="..\NmarketTestApp.Services\NmarketTestApp.Services.csproj" />
+    <ProjectReference Include="..\NmarketTestApp.Utils\NmarketTestApp.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="src\app\common\dataStore.ts" />
+    <TypeScriptCompile Include="src\app\common\nmDataSource.ts" />
+    <TypeScriptCompile Include="src\app\models\object.model.ts" />
+    <TypeScriptCompile Include="src\app\modules\material\material.module.ts" />
+  </ItemGroup>
+
+</Project>

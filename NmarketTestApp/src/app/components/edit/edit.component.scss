@@ -1,0 +1,16 @@
+.data-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edata-container > * {
+  width: 50%;
+}
+
+.data-container form {
+  margin-bottom: 20px;
+}
+
+.data-container form > * {
+  margin: 5px 0;
+}
